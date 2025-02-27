@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/0b83c7e8-40c2-443e-a131-16e6b11352e4/resourceGroups/parentportal_group/providers/Microsoft.Web/sites/parentportal-kokapbtx5l2lm",
+    "appService.deploySubpath": "."
+}

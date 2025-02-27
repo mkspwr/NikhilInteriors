@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .profile-info {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .login-history {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome</h1>
+        <% if (user) { %>
+            <div class="profile-info">
+                <h2>User Profile</h2>
+                <p><strong>Name:</strong> <%= user.username %></p>
+                <p><strong>Signed Up:</strong> <%= user.signupDate.toLocaleString() %></p>
+                <p><strong>Last Login:</strong> <%= user.lastLogin.toLocaleString() %></p>
+                <p><strong>Thumbnail:</strong> <img src="<%= user.thumbnail %>" alt="User Thumbnail" width="100"></p>
+                <a href="/logout">Logout</a>
+            </div>
+
+            <div class="login-history">
+                <h2>Login History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Login Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% user.loginHistory.slice().reverse().forEach((login, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= login.loginTime.toLocaleString() %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+            <a href="/auth/google">Login with Google</a>
+        <% } %>
+    </div>
+</body>
+</html>
