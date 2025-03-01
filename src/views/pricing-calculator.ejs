@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Calculator | Nikhil Interiors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Replace this line -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    
+    <!-- With this updated Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/calculator.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Nikhil Interiors</h1>
+                <p class="tagline">Design • Create • Inspire</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#services">Services</a></li>
+                    <li><a href="/#portfolio">Portfolio</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="/auth/google" class="btn-login">Client Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="calculator-section">
+        <div class="container">
+            <h1 class="section-title">Pricing Calculator</h1>
+            <p class="calculator-intro">Get an approximate estimate for your interior design project. Please note that
+                the final price may vary based on specific requirements, materials chosen, and site conditions.</p>
+
+            <div class="calculator-container">
+                <form id="calculator-form">
+                    <div class="form-progress-container">
+                        <div class="form-progress">
+                            <div class="progress-step active" data-step="1">Project Type</div>
+                            <div class="progress-step" data-step="2">Details</div>
+                            <div class="progress-step" data-step="3">Features</div>
+                            <div class="progress-step" data-step="4">Contact</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Project Type -->
+                    <div class="form-step active" id="step-1">
+                        <h2>Select Project Type</h2>
+                        <div class="project-type-grid">
+                            <div class="project-type-card" data-type="residential-house">
+                                <i class="fas fa-home"></i>
+                                <h3>Residential House</h3>
+                                <p>Complete interior solutions for independent houses</p>
+                            </div>
+                            <div class="project-type-card" data-type="residential-apartment">
+                                <i class="fas fa-building"></i>
+                                <h3>Residential Apartment</h3>
+                                <p>Custom designs for apartment living</p>
+                            </div>
+                            <div class="project-type-card" data-type="office">
+                                <i class="fas fa-briefcase"></i>
+                                <h3>Office Space</h3>
+                                <p>Professional environments for business</p>
+                            </div>
+                        </div>
+                        <input type="hidden" name="projectType" id="projectType" required>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-primary next-btn" disabled>Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Project Details -->
+                    <div class="form-step" id="step-2">
+                        <h2>Project Details</h2>
+                        <div class="form-group">
+                            <label for="area">Area (in sq. ft.)</label>
+                            <input type="number" id="area" name="area" min="100" placeholder="Enter area in square feet"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rooms">Number of Rooms</label>
+                            <input type="number" id="rooms" name="rooms" min="1" placeholder="Number of rooms to design"
+                                required>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary prev-btn">Back</button>
+                            <button type="button" class="btn btn-primary next-btn">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Features Level -->
+                    <div class="form-step" id="step-3">
+                        <h2>Select Feature Level</h2>
+                        <div class="feature-level-grid">
+                            <div class="feature-level-card" data-level="basic">
+                                <div class="level-header">
+                                    <h3>Basic</h3>
+                                    <span class="price-range">₹ 1,000 - 1,500 /sq. ft.</span>
+                                </div>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> Standard materials</li>
+                                    <li><i class="fas fa-check"></i> Essential fixtures and fittings</li>
+                                    <li><i class="fas fa-check"></i> Functional design</li>
+                                    <li><i class="fas fa-check"></i> 1 year warranty</li>
+                                </ul>
+                            </div>
+                            <div class="feature-level-card" data-level="premium">
+                                <div class="level-header">
+                                    <h3>Premium</h3>
+                                    <span class="price-range">₹ 1,600 - 2,200 /sq. ft.</span>
+                                </div>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> High-quality materials</li>
+                                    <li><i class="fas fa-check"></i> Designer fixtures</li>
+                                    <li><i class="fas fa-check"></i> Custom solutions</li>
+                                    <li><i class="fas fa-check"></i> 2 year warranty</li>
+                                    <li><i class="fas fa-check"></i> Advanced lighting</li>
+                                </ul>
+                            </div>
+                            <div class="feature-level-card" data-level="luxury">
+                                <div class="level-header recommended">
+                                    <h3>Luxury</h3>
+                                    <span class="price-range">₹ 2,300+ /sq. ft.</span>
+                                </div>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> Premium imported materials</li>
+                                    <li><i class="fas fa-check"></i> High-end fixtures</li>
+                                    <li><i class="fas fa-check"></i> Bespoke solutions</li>
+                                    <li><i class="fas fa-check"></i> 3 year warranty</li>
+                                    <li><i class="fas fa-check"></i> Smart home integration</li>
+                                    <li><i class="fas fa-check"></i> Signature design elements</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <input type="hidden" name="featureLevel" id="featureLevel" required>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary prev-btn">Back</button>
+                            <button type="button" class="btn btn-primary next-btn" disabled>Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Contact Information -->
+                    <div class="form-step" id="step-4">
+                        <h2>Contact Information</h2>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address" placeholder="Your address" required></textarea>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary prev-btn">Back</button>
+                            <button type="submit" class="btn btn-primary">Get Estimate</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Results Section (Initially Hidden) -->
+                <div id="result-section" class="result-section" style="display: none;">
+                    <h2>Your Estimate</h2>
+                    <div class="estimate-card">
+                        <div class="estimate-header">
+                            <h3>Project Summary</h3>
+                            <button class="btn btn-secondary" id="recalculate-btn">Recalculate</button>
+                        </div>
+                        <div class="estimate-details">
+                            <div class="estimate-row">
+                                <span>Project Type:</span>
+                                <span id="result-project-type"></span>
+                            </div>
+                            <div class="estimate-row">
+                                <span>Area:</span>
+                                <span id="result-area"></span>
+                            </div>
+                            <div class="estimate-row">
+                                <span>Feature Level:</span>
+                                <span id="result-level"></span>
+                            </div>
+                            <div class="estimate-divider"></div>
+                            <div class="estimate-row total">
+                                <span>Estimated Price Range:</span>
+                                <span id="result-price-range"></span>
+                            </div>
+                        </div>
+                        <div class="estimate-notes">
+                            <p><strong>Note:</strong> This is an approximate estimate based on your inputs. The final
+                                quote may vary based on:</p>
+                            <ul>
+                                <li>Specific material selections and brands</li>
+                                <li>Complexity of design and execution</li>
+                                <li>Site conditions and accessibility</li>
+                                <li>Timeline requirements</li>
+                            </ul>
+                            <p class="tax-note">* The above estimate does not include Goods and Services Tax (GST).</p>
+                            <p>Our team will contact you shortly to discuss your project in detail and provide a more
+                                accurate quotation.</p>
+                        </div>
+                    </div>
+                    <div class="contact-actions">
+                        <button class="btn btn-primary" id="save-estimate-btn">Save Estimate</button>
+                        <a href="/" class="btn btn-secondary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer content (replacing the include) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Nikhil Interiors</h3>
+                    <p>Creating beautiful spaces since 2010</p>
+                    <p>Mumbai & Navi Mumbai, Maharashtra</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#services">Services</a></li>
+                        <li><a href="/#portfolio">Portfolio</a></li>
+                        <li><a href="/#pricing">Pricing</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@nikhilinteriors.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nikhil Interiors. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Create user selections object to store form data as user progresses
+            const userSelections = {
+                projectType: '',
+                area: '',
+                rooms: '',
+                featureLevel: '',
+                name: '',
+                email: '',
+                phone: '',
+                address: ''
+            };
+
+            // Form element reference
+            const form = document.getElementById('calculator-form');
+
+            if (form) {
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    console.log('Form submitted');
+
+                    // Collect form data for API submission
+                    try {
+                        const response = await fetch('/api/save-quote', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                projectType: document.querySelector('[name="projectType"]').value,
+                                area: document.querySelector('[name="area"]').value,
+                                rooms: document.querySelector('[name="rooms"]')?.value || 1,
+                                featureLevel: document.querySelector('[name="featureLevel"]').value,
+                                name: document.querySelector('[name="name"]').value,
+                                email: document.querySelector('[name="email"]').value,
+                                phone: document.querySelector('[name="phone"]').value,
+                                address: document.querySelector('[name="address"]').value
+                            })
+                        });
+
+                        const result = await response.json();
+                        console.log('Response from server:', result);
+
+                        if (result.success) {
+                            // Hide form and show results
+                            document.getElementById('calculator-form').style.display = 'none';
+                            document.getElementById('result-section').style.display = 'block';
+
+                            // Update result display with server data
+                            document.getElementById('result-price-range').textContent = 
+                                `₹ ${formatNumber(result.data.minPrice)} - ${formatNumber(result.data.maxPrice)}`;
+
+                        } else {
+                            alert('Error: ' + result.message);
+                        }
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        alert('An error occurred while submitting your quote. Please try again.');
+                    }
+                });
+            } else {
+                console.error('Form element not found!');
+            }
+
+            // Pricing rates based on project type and feature level (in ₹ per sq ft)
+            const pricingRates = {
+                'residential-house': {
+                    'basic': { min: 1000, max: 1500 },
+                    'premium': { min: 1600, max: 2200 },
+                    'luxury': { min: 2300, max: 3000 }
+                },
+                'residential-apartment': {
+                    'basic': { min: 1100, max: 1600 },
+                    'premium': { min: 1700, max: 2300 },
+                    'luxury': { min: 2400, max: 3100 }
+                },
+                'office': {
+                    'basic': { min: 1200, max: 1700 },
+                    'premium': { min: 1800, max: 2400 },
+                    'luxury': { min: 2500, max: 3200 }
+                }
+            };
+
+            // Step 1: Project Type Selection
+            const projectTypeCards = document.querySelectorAll('.project-type-card');
+            projectTypeCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    // Remove active class from all cards
+                    projectTypeCards.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to selected card
+                    this.classList.add('active');
+
+                    // Store selected project type
+                    const projectType = this.getAttribute('data-type');
+                    userSelections.projectType = projectType;
+                    document.getElementById('projectType').value = projectType;
+
+                    // Enable the next button
+                    document.querySelector('#step-1 .next-btn').disabled = false;
+                });
+            });
+
+            // Step 3: Feature Level Selection
+            const featureLevelCards = document.querySelectorAll('.feature-level-card');
+            featureLevelCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    // Remove active class from all cards
+                    featureLevelCards.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to selected card
+                    this.classList.add('active');
+
+                    // Store selected feature level
+                    const featureLevel = this.getAttribute('data-level');
+                    userSelections.featureLevel = featureLevel;
+                    document.getElementById('featureLevel').value = featureLevel;
+
+                    // Enable the next button
+                    document.querySelector('#step-3 .next-btn').disabled = false;
+                });
+            });
+
+            // Form Navigation
+            const formSteps = document.querySelectorAll('.form-step');
+            const progressSteps = document.querySelectorAll('.progress-step');
+
+            // Next button action
+            document.querySelectorAll('.next-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const currentStep = this.closest('.form-step');
+                    const currentStepIndex = Array.from(formSteps).indexOf(currentStep);
+
+                    if (currentStepIndex === 1) {
+                        // Store area and rooms when moving from step 2
+                        userSelections.area = document.getElementById('area').value;
+                        userSelections.rooms = document.getElementById('rooms').value;
+                    }
+
+                    // Move to next step
+                    currentStep.classList.remove('active');
+                    formSteps[currentStepIndex + 1].classList.add('active');
+
+                    // Update progress indicator
+                    progressSteps[currentStepIndex].classList.add('completed');
+                    progressSteps[currentStepIndex + 1].classList.add('active');
+                });
+            });
+
+            // Previous button action
+            document.querySelectorAll('.prev-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const currentStep = this.closest('.form-step');
+                    const currentStepIndex = Array.from(formSteps).indexOf(currentStep);
+
+                    // Move to previous step
+                    currentStep.classList.remove('active');
+                    formSteps[currentStepIndex - 1].classList.add('active');
+
+                    // Update progress indicator
+                    progressSteps[currentStepIndex].classList.remove('active');
+                    progressSteps[currentStepIndex - 1].classList.add('active');
+                });
+            });
+
+            // Handle form calculation for immediate UI feedback
+            if (document.getElementById('calculator-form')) {
+                document.getElementById('calculator-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Collect form data
+                    const formData = new FormData(this);
+                    userSelections.name = formData.get('name');
+                    userSelections.email = formData.get('email');
+                    userSelections.phone = formData.get('phone');
+                    userSelections.address = formData.get('address');
+
+                    // Calculate price range
+                    const projectType = userSelections.projectType;
+                    const featureLevel = userSelections.featureLevel;
+                    const area = parseInt(userSelections.area);
+
+                    const rateRange = pricingRates[projectType][featureLevel];
+                    const minPrice = rateRange.min * area;
+                    const maxPrice = rateRange.max * area;
+
+                    // Display results
+                    document.getElementById('result-project-type').textContent = getProjectTypeName(projectType);
+                    document.getElementById('result-area').textContent = `${area} sq. ft.`;
+                    document.getElementById('result-level').textContent = capitalizeFirst(featureLevel);
+                    document.getElementById('result-price-range').textContent = `₹ ${formatNumber(minPrice)} - ${formatNumber(maxPrice)}`;
+
+                    // Hide form and show results
+                    document.getElementById('calculator-form').style.display = 'none';
+                    document.getElementById('result-section').style.display = 'block';
+                });
+            }
+
+            // Recalculate button action
+            if (document.getElementById('recalculate-btn')) {
+                document.getElementById('recalculate-btn').addEventListener('click', function () {
+                    document.getElementById('calculator-form').style.display = 'block';
+                    document.getElementById('result-section').style.display = 'none';
+
+                    // Reset to first step
+                    formSteps.forEach(step => step.classList.remove('active'));
+                    formSteps[0].classList.add('active');
+
+                    progressSteps.forEach(step => {
+                        step.classList.remove('active');
+                        step.classList.remove('completed');
+                    });
+                    progressSteps[0].classList.add('active');
+                });
+            }
+
+            // Helper functions
+            function getProjectTypeName(type) {
+                const names = {
+                    'residential-house': 'Residential House',
+                    'residential-apartment': 'Residential Apartment',
+                    'office': 'Office Space'
+                };
+                return names[type] || type;
+            }
+
+            function capitalizeFirst(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+
+            function formatNumber(num) {
+                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+            }
+
+            // Save quote button action
+            if (document.getElementById('save-estimate-btn')) {
+                document.getElementById('save-estimate-btn').addEventListener('click', async function() {
+                    try {
+                        const response = await fetch('/api/save-quote', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(userSelections)
+                        });
+                        
+                        const result = await response.json();
+                        if (result.success) {
+                            alert('Your estimate has been saved. Reference ID: ' + result.data.quoteId);
+                        } else {
+                            alert('Error: ' + result.message);
+                        }
+                    } catch (error) {
+                        console.error('Error saving estimate:', error);
+                        alert('Failed to save your estimate. Please try again.');
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Form submission handling - your existing code
+        // ...
+        
+        // Save estimate button handling
+        const saveEstimateBtn = document.getElementById('save-estimate-btn');
+        if (saveEstimateBtn) {
+            saveEstimateBtn.addEventListener('click', async function() {
+                try {
+                    // Disable the button while processing to prevent multiple submissions
+                    saveEstimateBtn.disabled = true;
+                    saveEstimateBtn.textContent = 'Saving...';
+                    
+                    // Collect all form data again in case it changed
+                    const formData = {
+                        projectType: document.querySelector('[name="projectType"]').value,
+                        area: document.querySelector('[name="area"]').value,
+                        rooms: document.querySelector('[name="rooms"]')?.value || 1,
+                        featureLevel: document.querySelector('[name="featureLevel"]').value,
+                        name: document.querySelector('[name="name"]').value,
+                        email: document.querySelector('[name="email"]').value,
+                        phone: document.querySelector('[name="phone"]').value,
+                        address: document.querySelector('[name="address"]').value
+                    };
+                    
+                    const response = await fetch('/api/save-quote', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    const result = await response.json();
+                    console.log('Save estimate response:', result);
+                    
+                    if (result.success) {
+                        // Show success message with quote ID
+                        if (result.data && result.data.quoteId) {
+                            // Update UI to show success state
+                            saveEstimateBtn.classList.add('success');
+                            saveEstimateBtn.textContent = '✓ Saved';
+                            saveEstimateBtn.disabled = true; // Disable the button permanently
+                            
+                            // Show reference ID if there's a place for it
+                            if (document.getElementById('result-quote-id')) {
+                                document.getElementById('result-quote-id').textContent = result.data.quoteId;
+                            }
+                            
+                            // Show print button
+                            showPrintButton();
+                            
+                            // Show success notification
+                            showNotification('Your estimate has been saved successfully!', 'success');
+                        } else {
+                            saveEstimateBtn.textContent = 'Save Estimate';
+                            saveEstimateBtn.disabled = false;
+                            showNotification('Your estimate has been saved!', 'success');
+                        }
+                    } else {
+                        saveEstimateBtn.textContent = 'Save Estimate';
+                        saveEstimateBtn.disabled = false;
+                        showNotification('Error: ' + (result.message || 'Failed to save estimate'), 'error');
+                    }
+                } catch (error) {
+                    console.error('Error saving estimate:', error);
+                    saveEstimateBtn.textContent = 'Save Estimate';
+                    saveEstimateBtn.disabled = false;
+                    showNotification('An error occurred while saving your estimate.', 'error');
+                }
+            });
+        }
+        
+        // Function to show print button
+        function showPrintButton() {
+            // Check if print button already exists
+            if (!document.getElementById('print-estimate-btn')) {
+                const resultSection = document.getElementById('result-section');
+                
+                if (resultSection) {
+                    // Create print button
+                    const printButton = document.createElement('button');
+                    printButton.id = 'print-estimate-btn';
+                    printButton.className = 'btn btn-secondary';
+                    printButton.innerHTML = '<i class="fas fa-print"></i> Print Estimate';
+                    printButton.style.marginLeft = '10px';
+                    
+                    // Add print functionality
+                    printButton.addEventListener('click', function() {
+                        // Prepare print-friendly version
+                        const printWindow = window.open('', '_blank');
+                        
+                        // Get estimate data
+                        const projectType = document.getElementById('result-project-type')?.textContent || '';
+                        const area = document.getElementById('result-area')?.textContent || '';
+                        const level = document.getElementById('result-level')?.textContent || '';
+                        const priceRange = document.getElementById('result-price-range')?.textContent || '';
+                        const quoteId = document.getElementById('result-quote-id')?.textContent || '';
+                        const customerName = document.querySelector('[name="name"]')?.value || '';
+                        
+                        // Create print content
+                        printWindow.document.write(`
+                            <!DOCTYPE html>
+                            <html>
+                            <head>
+                                <title>Interior Design Estimate - Nikhil Interiors</title>
+                                <style>
+                                    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+                                    .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+                                    .logo { font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+                                    .tagline { font-style: italic; color: #666; margin-bottom: 15px; }
+                                    .estimate-details { margin-top: 30px; }
+                                    .estimate-row { display: flex; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+                                    .estimate-label { width: 150px; font-weight: bold; }
+                                    .estimate-value { flex-grow: 1; }
+                                    .price-section { margin: 30px 0; padding: 15px; background-color: #f9f9f9; border-radius: 5px; }
+                                    .price-heading { font-size: 18px; font-weight: bold; }
+                                    .price-amount { font-size: 24px; font-weight: bold; color: #2a5885; margin: 10px 0; }
+                                    .notes { margin-top: 40px; font-size: 12px; color: #666; }
+                                    .footer { margin-top: 50px; font-size: 12px; text-align: center; color: #888; border-top: 1px solid #ddd; padding-top: 10px; }
+                                    .quote-id { font-size: 11px; color: #888; margin-top: 30px; }
+                                </style>
+                            </head>
+                            <body>
+                                <div class="header">
+                                    <div class="logo">Nikhil Interiors</div>
+                                    <div class="tagline">Design • Create • Inspire</div>
+                                    <div>Mumbai & Navi Mumbai, Maharashtra</div>
+                                </div>
+                                
+                                <h1>Interior Design Estimate</h1>
+                                <p>Date: ${new Date().toLocaleDateString()}</p>
+                                <p>Prepared for: ${customerName}</p>
+                                
+                                <div class="estimate-details">
+                                    <div class="estimate-row">
+                                        <div class="estimate-label">Project Type:</div>
+                                        <div class="estimate-value">${projectType}</div>
+                                    </div>
+                                    <div class="estimate-row">
+                                        <div class="estimate-label">Area:</div>
+                                        <div class="estimate-value">${area}</div>
+                                    </div>
+                                    <div class="estimate-row">
+                                        <div class="estimate-label">Package Level:</div>
+                                        <div class="estimate-value">${level}</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="price-section">
+                                    <div class="price-heading">Estimated Cost Range:</div>
+                                    <div class="price-amount">${priceRange}</div>
+                                    <div>Based on your project specifications</div>
+                                </div>
+                                
+                                <div class="notes">
+                                    <p><strong>Note:</strong></p>
+                                    <ul>
+                                        <li>This is an approximate estimate. Final pricing may vary based on specific requirements, material selection, and site conditions.</li>
+                                        <li>Prices are exclusive of GST (Goods and Services Tax).</li>
+                                        <li>Prices may vary based on location and availability.</li>
+                                        <li>Valid for 30 days from the date of issue.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="quote-id">Reference ID: ${quoteId}</div>
+                                
+                                <div class="footer">
+                                    <p>Thank you for choosing Nikhil Interiors!</p>
+                                    <p>Contact: +91 98765 43210 | info@nikhilinteriors.com | www.nikhilinteriors.com</p>
+                                </div>
+                            </body>
+                            </html>
+                        `);
+                        
+                        // Trigger print and close the document when done
+                        setTimeout(() => {
+                            printWindow.document.close();
+                            printWindow.focus();
+                            printWindow.print();
+                        }, 500);
+                    });
+                    
+                    // Find save button and insert print button after it
+                    const saveButton = document.getElementById('save-estimate-btn');
+                    if (saveButton && saveButton.parentNode) {
+                        saveButton.parentNode.insertBefore(printButton, saveButton.nextSibling);
+                    } else {
+                        // If save button not found, append to result section
+                        resultSection.appendChild(printButton);
+                    }
+                }
+            }
+        }
+        
+        // Helper function for showing notifications
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `<div class="notification-content">${message}</div>`;
+            
+            // Add to document
+            document.body.appendChild(notification);
+            
+            // Show with animation
+            setTimeout(() => notification.classList.add('show'), 10);
+            
+            // Auto-hide after a delay
+            setTimeout(() => {
+                notification.classList.remove('show');
+                // Remove from DOM after animation
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+    });
+</script>
+</body>
+
+</html>
