@@ -73,32 +73,51 @@
         <div class="container">
             <h2 class="section-title">Our Portfolio</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/400x300?text=Living+Room" alt="Living Room Project">
+                <div class="portfolio-item" id="living-carousel">
+                    <img src="/resources/living/living1.jpg" alt="Living Room Project">
                     <div class="portfolio-overlay">
                         <h3>Modern Living Room</h3>
                         <p>Residential Project in Navi Mumbai</p>
+                        <div class="carousel-controls">
+                            <button class="carousel-control prev" onclick="changeImage('living', -1)"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-control next" onclick="changeImage('living', 1)"><i class="fas fa-chevron-right"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/400x300?text=Office+Space" alt="Office Space Project">
+                
+                <div class="portfolio-item" id="office-carousel">
+                    <img src="/resources/office/office1.jpg" alt="Office Space Project">
                     <div class="portfolio-overlay">
                         <h3>Corporate Office</h3>
                         <p>Commercial Project in Mumbai</p>
+                        <div class="carousel-controls">
+                            <button class="carousel-control prev" onclick="changeImage('office', -1)"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-control next" onclick="changeImage('office', 1)"><i class="fas fa-chevron-right"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/400x300?text=Kitchen" alt="Kitchen Project">
+                
+                <div class="portfolio-item" id="kitchen-carousel">
+                    <img src="/resources/kitchen/kitchen1.jpg" alt="Kitchen Project">
                     <div class="portfolio-overlay">
                         <h3>Modern Kitchen</h3>
                         <p>Residential Project in Navi Mumbai</p>
+                        <div class="carousel-controls">
+                            <button class="carousel-control prev" onclick="changeImage('kitchen', -1)"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-control next" onclick="changeImage('kitchen', 1)"><i class="fas fa-chevron-right"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/400x300?text=Bedroom" alt="Bedroom Project">
+                
+                <div class="portfolio-item" id="bedroom-carousel">
+                    <img src="/resources/bedroom/bedroom1.jpg" alt="Bedroom Project">
                     <div class="portfolio-overlay">
                         <h3>Master Bedroom</h3>
                         <p>Residential Project in Mumbai</p>
+                        <div class="carousel-controls">
+                            <button class="carousel-control prev" onclick="changeImage('bedroom', -1)"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-control next" onclick="changeImage('bedroom', 1)"><i class="fas fa-chevron-right"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -247,5 +266,295 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Image collections for each category
+            const portfolioImages = {
+                living: [
+                    {
+                        src: '/resources/living/living1.jpg',
+                        title: 'Modern Living Room',
+                        description: 'Residential Project in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/living/living2.jpg',
+                        title: 'Contemporary Living Space',
+                        description: 'Residential Project in Mumbai'
+                    },
+                    {
+                        src: '/resources/living/living3.jpg',
+                        title: 'Luxury Living Room',
+                        description: 'Penthouse Project in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/living/living4.jpg',
+                        title: 'Open Concept Living Area',
+                        description: 'Villa Project in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/living/living5.jpg',
+                        title: 'Minimalist Living Room',
+                        description: 'Apartment Project in Mumbai'
+                    },
+                    {
+                        src: '/resources/living/living6.jpg',
+                        title: 'Cozy Family Living Room',
+                        description: 'Residential Project in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/living/living7.jpg',
+                        title: 'Elegant Living Space',
+                        description: 'Luxury Apartment in Mumbai'
+                    },
+                    {
+                        src: '/resources/living/living8.jpg',
+                        title: 'Modern Entertainment Space',
+                        description: 'Premium Villa in Navi Mumbai'
+                    }
+                ],
+                office: [
+                    {
+                        src: '/resources/office/office1.jpg',
+                        title: 'Corporate Office',
+                        description: 'Commercial Project in Mumbai'
+                    },
+                    {
+                        src: '/resources/office/office2.jpg',
+                        title: 'Startup Workspace',
+                        description: 'Commercial Project in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/office/office3.jpg',
+                        title: 'Executive Office Suite',
+                        description: 'Commercial Project in Mumbai'
+                    },
+                    {
+                        src: '/resources/office/office4.jpg',
+                        title: 'Open Concept Workspace',
+                        description: 'Tech Company in Mumbai'
+                    },
+                    {
+                        src: '/resources/office/office5.jpg',
+                        title: 'Modern Meeting Room',
+                        description: 'Corporate Headquarters in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/office/office6.jpg',
+                        title: 'Creative Studio Space',
+                        description: 'Design Agency in Mumbai'
+                    },
+                    {
+                        src: '/resources/office/office7.jpg',
+                        title: 'Collaborative Workspace',
+                        description: 'Co-working Space in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/office/office8.jpg',
+                        title: 'Executive Conference Room',
+                        description: 'Financial Firm in Mumbai'
+                    },
+                    {
+                        src: '/resources/office/office9.jpg',
+                        title: 'Modern Reception Area',
+                        description: 'Corporate Office in Navi Mumbai'
+                    }
+                ],
+                kitchen: [
+                    {
+                        src: '/resources/kitchen/kitchen1.jpg',
+                        title: 'Modern Kitchen',
+                        description: 'Residential Project in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/kitchen/kitchen2.jpg',
+                        title: 'Contemporary Kitchen',
+                        description: 'Apartment Project in Mumbai'
+                    },
+                    {
+                        src: '/resources/kitchen/kitchen3.jpg',
+                        title: 'Luxury Kitchen',
+                        description: 'Villa Project in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/kitchen/kitchen4.jpg',
+                        title: 'Open Concept Kitchen',
+                        description: 'Modern Home in Mumbai'
+                    },
+                    {
+                        src: '/resources/kitchen/kitchen5.jpg',
+                        title: 'Minimalist Kitchen Design',
+                        description: 'Urban Apartment in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/kitchen/kitchen6.jpg',
+                        title: 'Family Kitchen Space',
+                        description: 'Residential Home in Mumbai'
+                    },
+                    {
+                        src: '/resources/kitchen/kitchen7.jpg',
+                        title: 'Gourmet Chef Kitchen',
+                        description: 'Luxury Villa in Navi Mumbai'
+                    }
+                ],
+                bedroom: [
+                    {
+                        src: '/resources/bedroom/bedroom1.jpg',
+                        title: 'Master Bedroom',
+                        description: 'Residential Project in Mumbai'
+                    },
+                    {
+                        src: '/resources/bedroom/bedroom2.jpg',
+                        title: 'Guest Bedroom',
+                        description: 'Villa Project in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/bedroom/bedroom3.jpg',
+                        title: 'Kids Bedroom',
+                        description: 'Apartment Project in Mumbai'
+                    },
+                    {
+                        src: '/resources/bedroom/bedroom4.jpg',
+                        title: 'Luxury Master Suite',
+                        description: 'Penthouse in Mumbai'
+                    },
+                    {
+                        src: '/resources/bedroom/bedroom5.jpg',
+                        title: 'Modern Bedroom Design',
+                        description: 'Contemporary Home in Navi Mumbai'
+                    },
+                    {
+                        src: '/resources/bedroom/bedroom6.jpg',
+                        title: 'Minimalist Bedroom',
+                        description: 'Urban Apartment in Mumbai'
+                    },
+                    {
+                        src: '/resources/bedroom/bedroom7.jpg',
+                        title: 'Cozy Guest Room',
+                        description: 'Family Home in Navi Mumbai'
+                    }
+                ]
+            };
+            
+            // Current index for each category
+            const currentIndices = {
+                living: 0,
+                office: 0,
+                kitchen: 0,
+                bedroom: 0
+            };
+            
+            // Auto-rotation timers for each category
+            const autoRotate = {};
+            
+            // Start auto-rotation only if elements exist
+            ['living', 'office', 'kitchen', 'bedroom'].forEach(category => {
+                if (document.getElementById(`${category}-carousel`)) {
+                    autoRotate[category] = setInterval(() => changeImage(category, 1), 12000 + Math.random() * 9000);
+                }
+            });
+            
+            // Function to change images with smoother transitions
+            window.changeImage = function(category, direction) {
+                const carouselElement = document.getElementById(`${category}-carousel`);
+                if (!carouselElement) {
+                    console.error(`Element with ID "${category}-carousel" not found`);
+                    return; // Exit if element doesn't exist
+                }
+                
+                // Reset auto-rotation timer when user clicks
+                clearInterval(autoRotate[category]);
+                autoRotate[category] = setInterval(() => changeImage(category, 1), 9000 + Math.random() * 2000);
+                
+                // Update index
+                currentIndices[category] = (currentIndices[category] + direction + portfolioImages[category].length) % portfolioImages[category].length;
+                
+                // Update image and text
+                const imgElement = carouselElement.querySelector('img');
+                const titleElement = carouselElement.querySelector('h3');
+                const descElement = carouselElement.querySelector('p');
+                
+                if (imgElement && titleElement && descElement) {
+                    const image = portfolioImages[category][currentIndices[category]];
+                    
+                    // Slow fade out effect
+                    imgElement.style.opacity = '0';
+                    imgElement.style.transition = 'opacity 1.5s ease-in-out';
+                    titleElement.style.opacity = '0';
+                    titleElement.style.transition = 'opacity 1s ease-in-out';
+                    descElement.style.opacity = '0';
+                    descElement.style.transition = 'opacity 1s ease-in-out';
+                    
+                    // Wait for fade out before changing content
+                    setTimeout(() => {
+                        // Change content
+                        imgElement.src = image.src;
+                        titleElement.textContent = image.title;
+                        descElement.textContent = image.description;
+                        
+                        // Wait a moment before fading back in
+                        setTimeout(() => {
+                            // Slow fade in effect
+                            imgElement.style.opacity = '1';
+                            setTimeout(() => {
+                                titleElement.style.opacity = '1';
+                                descElement.style.opacity = '1';
+                            }, 200); // Slight delay for text to follow image
+                        }, 100);
+                    }, 800); // Longer wait before changing content
+                }
+            };
+            
+            // Add image counter indicators
+            ['living', 'office', 'kitchen', 'bedroom'].forEach(category => {
+                const carouselElement = document.getElementById(`${category}-carousel`);
+                if (!carouselElement) return;
+                
+                const overlay = carouselElement.querySelector('.portfolio-overlay');
+                if (!overlay) return;
+                
+                // Create indicator container
+                const indicatorDiv = document.createElement('div');
+                indicatorDiv.className = 'image-indicators';
+                
+                // Add indicators for each image
+                for (let i = 0; i < portfolioImages[category].length; i++) {
+                    const indicator = document.createElement('span');
+                    indicator.className = 'image-indicator';
+                    indicator.dataset.index = i;
+                    if (i === 0) indicator.classList.add('active');
+                    
+                    // Add click event to jump to specific image
+                    indicator.addEventListener('click', function() {
+                        const targetIndex = parseInt(this.dataset.index);
+                        const currentIndex = currentIndices[category];
+                        const diff = targetIndex - currentIndex;
+                        changeImage(category, diff);
+                        
+                        // Update active indicator
+                        const indicators = carouselElement.querySelectorAll('.image-indicator');
+                        indicators.forEach(ind => ind.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                    
+                    indicatorDiv.appendChild(indicator);
+                }
+                
+                // Add indicators to overlay
+                overlay.appendChild(indicatorDiv);
+                
+                // Update indicator when image changes
+                const originalChangeImage = window.changeImage;
+                window.changeImage = function(cat, dir) {
+                    originalChangeImage(cat, dir);
+                    
+                    if (cat === category) {
+                        const indicators = carouselElement.querySelectorAll('.image-indicator');
+                        indicators.forEach(ind => ind.classList.remove('active'));
+                        indicators[currentIndices[cat]].classList.add('active');
+                    }
+                };
+            });
+        });
+    </script>
 </body>
 </html>
